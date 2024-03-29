@@ -1,4 +1,8 @@
-lst = [18, 14, 10, 6, 2]
+num_set = list(range(2, 19, 4))
 
-for x in range(len(lst)):
-    print(lst[x], end=' ')
+num_set.reverse()
+
+print(num_set)
+
+
+

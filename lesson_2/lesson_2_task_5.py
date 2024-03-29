@@ -1,12 +1,15 @@
 def month_to_season(x):
     
-    if (x == 1) or (x == 2) or (x == 12):
+    if x in [1,2,12]:
         print("Зима")
-    if (x == 3) or (x == 4) or (x == 5):
+    if x in [3,4,5]:
         print("Весна")
-    if (x == 6) or (x == 7) or (x == 8):
+    if x in [6,7,8]:
         print("Лето")
-    if (x == 9) or (x == 10) or (x == 11):
+    if x in [9,10,11]:
         print("Осень")
+    if x >= 13 or x < 1:
+        print(x)
 
-month_to_season(1)
+
+month_to_season(11)
