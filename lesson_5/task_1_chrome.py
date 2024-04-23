@@ -7,7 +7,7 @@ driver = webdriver.Chrome()
 driver.get("http://the-internet.herokuapp.com/add_remove_elements/")
 
 click = driver.find_element(By.CSS_SELECTOR, '[onclick="addElement()"]')
-for x in range (5):
+for x in range(5):
     sleep(1)
     click.click()
 

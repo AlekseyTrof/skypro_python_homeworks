@@ -11,8 +11,8 @@ for x in range(3):
 
     click = driver.find_element(By.CSS_SELECTOR, ".btn-primary")
     click.send_keys(Keys.RETURN)
-    sleep(1) 
+    sleep(1)
     driver.switch_to.alert.accept()  # Принять предупреждение
-    
-    sleep(1) 
+
+    sleep(1)
     driver.quit()

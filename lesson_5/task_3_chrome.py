@@ -12,6 +12,6 @@ for x in range(3):
     click = driver.find_element(By.CSS_SELECTOR, '.btn-primary')
     click.send_keys(Keys.RETURN)
     driver.switch_to.alert.accept()  # Принять предупреждение
-    
+
     sleep(1)  # успеть посмотреть что произошло в браузере
     driver.quit()
