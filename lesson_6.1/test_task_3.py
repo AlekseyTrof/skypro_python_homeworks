@@ -5,6 +5,7 @@ from selenium.webdriver.common.by import By
 
 driver = webdriver.Edge(service=EdgeService(EdgeChromiumDriverManager().install()))
 
+
 def test_saucedeme():
     driver.get("https://www.saucedemo.com/")
     driver.implicitly_wait(4)

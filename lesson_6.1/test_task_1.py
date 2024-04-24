@@ -5,6 +5,7 @@ from selenium.webdriver.common.by import By
 
 driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
 
+
 def test_form_elements():
     driver.get("https://bonigarcia.dev/selenium-webdriver-java/data-types.html")
     driver.implicitly_wait(4)
