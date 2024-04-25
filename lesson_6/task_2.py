@@ -16,7 +16,7 @@ sky = driver.find_element(By.CSS_SELECTOR, "#updatingButton")
 sky.click()
 
 skypro.until(
-    EC.text_to_be_present_in_element( (By.CSS_SELECTOR, "#updatingButton"), "SkyPro"))
+    EC.text_to_be_present_in_element((By.CSS_SELECTOR, "#updatingButton"), "SkyPro"))
 
 print(sky.text)
 
