@@ -11,13 +11,16 @@ browser = webdriver.Firefox(
 
 
 def test_calculator():
-    browser.get("https://bonigarcia.dev/selenium-webdriver-java/slow-calculator.html")
+    browser.get(
+        "https://bonigarcia.dev/selenium-webdriver-java/slow-calculator.html"
+        )
 
     delay_input = browser.find_element(By.CSS_SELECTOR, "#delay")
     delay_input.clear()
     delay_input.send_keys("45")
 
-    browser.find_element(By.CSS_SELECTOR, "#calculator > div.keys > span:nth-child(1)").click()
+    browser.find_element
+    (By.CSS_SELECTOR, "#calculator > div.keys > span:nth-child(1)").click()
     browser.find_element(By.CSS_SELECTOR, "span.operator:nth-child(4)").click()
     browser.find_element(By.CSS_SELECTOR, "span.btn:nth-child(2)").click()
     browser.find_element(By.CSS_SELECTOR, "span.btn:nth-child(15)").click()
