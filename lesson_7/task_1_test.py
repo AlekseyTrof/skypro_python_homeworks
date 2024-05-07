@@ -3,7 +3,6 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as ChromeService
 from webdriver_manager.chrome import ChromeDriverManager
 
-
 def test_bonig():
 
     driver = webdriver.Chrome(
@@ -25,9 +24,11 @@ def test_bonig():
     to_be_red = main_page.flied_zip_code()
     assert to_is_red == to_be_red
 
-    to_is_green = "rgba(209, 231, 221, 1)"
-    to_be_green = main_page.flied_green()
-    for field in to_be_green:
-        assert to_is_green == field.value_of_css_property("background-color")
+    other_fields = ['#first-name', '#last-name', '#address', 
+                '#city', '#country', '#e-mail', '#phone', '#job-position', '#company']
+ 
+    for field in other_fields:
+        field_color = main_page.flied_green(field)
+        assert field_color == 'rgba(209, 231, 221, 1)'
 
     main_page.quit()

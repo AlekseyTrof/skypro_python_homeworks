@@ -19,6 +19,6 @@ def test_calculator():
     calculator.wait_time(driver, "15")  # следует изменить время ожидания в классе, если время в put_new_waits() изменилось
     answer = calculator.watch_answer()
 
-    assert answer == "15"
+    assert answer == "15"  # следует изменить ответ, если в calculator.wait_time(driver, "15") - ответ другой
 
     calculator.quit()

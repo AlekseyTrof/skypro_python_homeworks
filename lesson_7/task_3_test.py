@@ -7,7 +7,7 @@ from selenium.webdriver.chrome.service import Service as ChromeService
 from webdriver_manager.chrome import ChromeDriverManager
 
 
-def test_calculator():
+def test_shop():
     driver = webdriver.Chrome(
         service=ChromeService(ChromeDriverManager().install())
         )

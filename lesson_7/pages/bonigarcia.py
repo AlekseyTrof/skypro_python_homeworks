@@ -66,10 +66,10 @@ class MainPage:
                 "background-color")
         return zip_code_field
 
-    def flied_green(self):
-        to_be_green = self.driver.find_elements(
-            By.CSS_SELECTOR, '.alert-success')
-        return to_be_green
+    def flied_green(self, field):
+        field_color = self.driver.find_element(
+                By.CSS_SELECTOR, field).value_of_css_property('background-color')
+        return field_color
 
     def quit(self):
         self.driver.quit()
