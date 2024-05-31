@@ -83,7 +83,7 @@ def test_aded_news_empl():
         "companyId": create_id,
         "email": "alex2@mail.ru",
         "url": "string",
-        "phone": "899202030304",
+        "phone": "666666",
         "birthdate": "2024-05-29T07:39:54.200Z",
         "isActive": True
     }
