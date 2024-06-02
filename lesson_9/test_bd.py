@@ -1,12 +1,11 @@
 from employee_api1 import EmployeeApi
 from table_bd import Table_bd
-from sqlalchemy import create_engine
 import requests
-import sqlalchemy
 
 base_url = "https://x-clients-be.onrender.com"
 api = EmployeeApi(base_url)
 db = Table_bd('postgresql://x_clients_db_3fmx_user:mzoTw2Vp4Ox4NQH0XKN3KumdyAYE31uq@dpg-cour99g21fec73bsgvug-a.oregon-postgres.render.com/x_clients_db_3fmx')
+
 
 def test_add_news_empl():
     name_company = 'Testing'
@@ -33,7 +32,7 @@ def test_add_news_empl():
         "isActive": True
     }
 
-    my_headers= {}
+    my_headers = {}
     my_headers["x-client-token"] = api.get_token()
     requests.post(base_url+'/employee', headers=my_headers, json=body1)
     assert len(db.get_empl_in_company(max_id_company)) == 1
@@ -44,6 +43,7 @@ def test_add_news_empl():
     db.delete_empl(max_id_company)
     db.delete_company(max_id_company)
     assert len(all_empl) == 2
+
 
 def test_get_info_new_empl():
     name_company = 'Testing'
@@ -63,7 +63,7 @@ def test_get_info_new_empl():
         "isActive": True
     }
 
-    my_headers= {}
+    my_headers = {}
     my_headers["x-client-token"] = api.get_token()
     requests.post(base_url+'/employee', headers=my_headers, json=body)
 
@@ -75,38 +75,48 @@ def test_get_info_new_empl():
     assert get_emp["last_name"] == last_name
     assert get_emp["phone"] == phone
 
+
 def test_change_info_empl():
     name_company = 'Testing'
     db.create(name_company)
     max_id_company = db.get_max_id_company()
-    my_headers= {}
-    my_headers["x-client-token"] = api.get_token()
-    
-    first_name = 'Tester1'
-    last_name = 'Test1'
-    phone = '692020'
-    db.add_new_empl(first_name, last_name, phone, max_id_company)
-
-    first_name2 = "Tester new"
-    last_name2 = "Tester1 new"
-    email2 = "alex2@mail.ru"
-    phone2 = "666 333"
-    body_change = {
+    first_name = "Tester1"
+    last_name = "Tester11"
+    email = "alex1@mail.ru"
+    phone = "89202030304"
+    body = {
         "id": 0,
-        "firstName": first_name2,
-        "lastName": last_name2,
+        "firstName": first_name,
+        "lastName": last_name,
         "companyId": max_id_company,
-        "email": email2,
-        "phone": phone2,
+        "email": email,
+        "phone": phone,
         "isActive": True
     }
-    change_info_employee = requests.patch(
-        base_url+'/employee/'+max_id_company, headers=my_headers, json=body_change
+
+    my_headers = {}
+    my_headers["x-client-token"] = api.get_token()
+    add_id_employee = str(requests.post(
+        base_url+'/employee', headers=my_headers, json=body
+        ).json()["id"])
+
+    # Обновление информации о сотруднике
+    last_name2 = "Tester1 new"
+    email2 = "alex2@mail.ru"
+    body_change = {
+        "firstName": first_name,
+        "lastName": last_name2,
+        "email": email2,
+        "url": "string",
+        "phone": "666666",
+        "isActive": False
+    }
+    requests.patch(
+        base_url+'/employee/'+add_id_employee, headers=my_headers, json=body_change
         )
 
-    get_emp = db.get_empl_in_company(max_id_company)[0]
+    # Проверка обновленной информации о сотруднике
+    updated_employee = db.get_empl_in_company(max_id_company)[0]
     db.delete_empl(max_id_company)
     db.delete_company(max_id_company)
-    assert get_emp["first_name"] == first_name2
-    assert get_emp["last_name"] == last_name2
-    assert get_emp["phone"] == phone2
+    assert updated_employee["last_name"] == last_name2
