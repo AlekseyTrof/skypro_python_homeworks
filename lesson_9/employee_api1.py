@@ -1,11 +1,13 @@
 import requests
 
 class EmployeeApi:
-
-    def __init__(self, url):
+    """
+        Функции для работы с API
+    """
+    def __init__(self, url : str):
         self.url = url
 
-    def get_token(self, user = 'raphael', password = 'cool-but-crude'):
+    def get_token(self, user = 'raphael', password = 'cool-but-crude') -> str:
         user_pass = {
             'username' : user,
             'password' : password
@@ -14,7 +16,7 @@ class EmployeeApi:
         auth = requests.post(self.url+'/auth/login', json=user_pass)
         return auth.json()["userToken"]
 
-    def create_company_id(self, name, description=''):
+    def create_company_id(self, name : str, description=str('')) -> int:
         company = {
             "name": name,
             "description": description
@@ -26,7 +28,7 @@ class EmployeeApi:
         resp = requests.post(self.url+'/company', json=company, headers=my_headers)
         return resp.json()["id"]
 
-    def id_new_empl(self):
+    def id_new_empl(self) -> int:
         base_url = 'https://x-clients-be.onrender.com'
         create_id = self.create_company_id("lesson", "descr")
         id_company = {

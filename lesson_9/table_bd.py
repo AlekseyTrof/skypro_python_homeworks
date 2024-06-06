@@ -1,8 +1,11 @@
 from sqlalchemy import create_engine
 from sqlalchemy import text
-
+import allure
 
 class Table_bd:
+    """
+        Функции для работы с БД
+    """
     __scripts = {
         "select": "select * from company",
         "select only active": "select * from company whwre \"isActive\" = true",
