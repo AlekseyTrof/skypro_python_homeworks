@@ -1,7 +1,9 @@
 import requests
 
 class EmployeeApi:
-
+    """
+        Функции для работы с API
+    """
     def __init__(self, url):
         self.url = url
 
